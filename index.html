@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MBTI 人格測驗 - 免費十六型性格分析 | Tool-Maker</title>
+  <meta name="description" content="回答 24 道情境題，精準分析你的 MBTI 人格類型！INFP、ENTJ、ISFJ…16 種結果完整解讀，含相性分析與社群分享，免費線上測試。" />
+  <meta property="og:title" content="MBTI 十六型人格分析測驗" />
+  <meta property="og:description" content="24 道情境題揭曉你的 MBTI 人格類型！完整性格解讀 + 相性分析，立即測試" />
+  <meta property="og:image" content="./assets/og-image.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="ad-slot ad-slot--header" data-ad-slot="header" aria-label="Advertisement"></div>
+  </header>
+
+  <main class="tool-layout">
+    <div class="tool-content">
+      <div id="app-container" class="card">
+
+        <!-- Start Screen -->
+        <div id="screen-start" class="screen active">
+          <h1 class="gradient-title title-serif">MBTI 十六型人格分析</h1>
+          <p class="subtitle text-muted">回答 24 道情境題，探索你內心的真實模樣</p>
+          <div class="start-visual">
+            <div class="mbti-grid">
+              <span class="mbti-letter" style="--delay:0">E</span>
+              <span class="mbti-letter" style="--delay:1">N</span>
+              <span class="mbti-letter" style="--delay:2">F</span>
+              <span class="mbti-letter" style="--delay:3">P</span>
+              <span class="mbti-letter" style="--delay:4">I</span>
+              <span class="mbti-letter" style="--delay:5">S</span>
+              <span class="mbti-letter" style="--delay:6">T</span>
+              <span class="mbti-letter" style="--delay:7">J</span>
+            </div>
+          </div>
+          <div class="action-buttons mt-6">
+            <button id="btn-start" class="btn btn-primary">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> 開始測驗
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="screen-quiz" class="screen hidden">
+          <div class="quiz-header">
+            <div class="progress-bar">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <div class="question-counter text-muted">
+              問題 <span id="q-current">1</span> / <span id="q-total">24</span>
+            </div>
+          </div>
+          <div class="question-illustration-wrap">
+            <img id="question-illustration" class="question-illustration" alt="題目情境" loading="eager" />
+          </div>
+          <h2 id="question-text" class="question-text title-serif"></h2>
+          <div id="options-container" class="options-container"></div>
+          <div class="quiz-nav">
+            <button id="btn-back" class="btn btn-secondary btn-back hidden">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> 上一題
+            </button>
+          </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="screen-result" class="screen hidden">
+          <h2 class="title-serif text-muted mb-2">你的 MBTI 人格類型是...</h2>
+          <div class="result-portrait-wrap">
+            <img id="result-image" class="result-image" alt="MBTI 人格形象" />
+          </div>
+          <h1 id="result-title" class="result-title gradient-title title-serif"></h1>
+          <div id="result-rarity" class="rarity-badge"></div>
+
+          <div id="dimension-bars" class="dimension-bars"></div>
+
+          <p id="result-desc" class="result-desc text-muted"></p>
+
+          <div class="compatibility-section">
+            <div id="best-match" class="compatibility-card best-match">
+              <div class="compat-label">最佳拍檔</div>
+              <div id="best-match-type" class="compat-type"></div>
+            </div>
+            <div id="worst-match" class="compatibility-card worst-match">
+              <div class="compat-label">潛意識敵人</div>
+              <div id="worst-match-type" class="compat-type"></div>
+            </div>
+          </div>
+
+          <div class="action-buttons mt-6">
+            <button id="btn-share" class="btn btn-primary">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> 分享結果
+            </button>
+            <button id="btn-restart" class="btn btn-secondary">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> 重新測驗
+            </button>
+          </div>
+          <div id="toast" class="toast hidden">結果已複製到剪貼簿！</div>
+        </div>
+
+      </div>
+    </div>
+
+    <aside class="tool-sidebar">
+      <div class="ad-slot ad-slot--sidebar" data-ad-slot="sidebar" aria-label="Advertisement"></div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="ad-slot ad-slot--footer" data-ad-slot="footer" aria-label="Advertisement"></div>
+  </footer>
+
+  <script src="./main.js"></script>
+  <script src="./ads/ad-loader.js"></script>
+</body>
+</html>
